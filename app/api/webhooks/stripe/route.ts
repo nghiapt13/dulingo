@@ -1,12 +1,16 @@
 import db from "@/db/drizzle";
 import { userSubscription } from "@/db/schema";
-import { stripe } from "@/lib/stripe";
 import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 export async function POST(req: Request) {
+    const stripe = new Stripe(process.env.STRIPE_API_KEY!, {
+        apiVersion: "2024-11-20.acacia",
+        typescript: true,
+
+    });
     const body = await req.text();
     const signature = headers().get("Stripe-Signature") as string;
 
