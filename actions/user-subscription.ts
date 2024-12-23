@@ -28,31 +28,31 @@ export const createStripeUrl = async () => {
     }
 
     const stripeSesson = await stripe.checkout.sessions.create({
-        mode:"subscription",
-        payment_method_types:["card"],
-        customer_email:user.emailAddresses[0].emailAddress,
-        line_items:[
+        mode: "subscription",
+        payment_method_types: ["card"],
+        customer_email: user.emailAddresses[0].emailAddress,
+        line_items: [
             {
-                quantity:1,
-                price_data:{
-                    currency:"VND",
-                    product_data:{
-                        name:"DuLingo Pro",
-                        description:"Unlimited Hearts",
+                quantity: 1,
+                price_data: {
+                    currency: "VND",
+                    product_data: {
+                        name: "Dulingo Pro",
+                        description: "Unlimited Hearts",
                     },
-                    unit_amount:20000,
-                    recurring:{
-                        interval:"month",
+                    unit_amount: 20000,
+                    recurring: {
+                        interval: "month",
                     }
                 }
             }
         ],
-        metadata:{
+        metadata: {
             userId,
         },
-        success_url:returnUrl,
-        cancel_url:returnUrl,
+        success_url: returnUrl,
+        cancel_url: returnUrl,
     });
 
-    return{data:stripeSesson.url}
+    return { data: stripeSesson.url }
 }

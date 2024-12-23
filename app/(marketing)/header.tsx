@@ -15,7 +15,7 @@ export const Header = () => {
                         alt="Mascot"
                         className="animate-pulse"
                     />
-                    <h1 className="text-2xl font-extrabold text-green-600 tracking-wide">DuoLingo</h1>
+                    <h1 className="text-2xl font-extrabold text-green-600 tracking-wide">Dulingo</h1>
                 </div>
                 <ClerkLoading>
                     <Loader

@@ -5,6 +5,7 @@ import { SideBarItem } from "./sidebar-item";
 import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs"
 import { Loader } from "lucide-react";
 import { currentUser } from "@clerk/nextjs/server";
+import { isAdmin } from "@/lib/admin";
 
 type Props = {
     className?: string;
@@ -22,7 +23,7 @@ export const Sidebar = async ({ className }: Props) => {
                         width={40}
                         alt="Mascot"
                     />
-                    <h1 className="text-2xl font-extrabold text-green-600 tracking-wide">DuoLingo</h1>
+                    <h1 className="text-2xl font-extrabold text-green-600 tracking-wide">Dulingo</h1>
                 </div>
             </Link>
             <div className="flex flex-col gap-y-2 flex-1">
@@ -30,6 +31,11 @@ export const Sidebar = async ({ className }: Props) => {
                 <SideBarItem label="Leaderboard" href="/leaderboard" iconSrc="/leaderboard.svg" />
                 <SideBarItem label="Quests" href="/quests" iconSrc="/quests.svg" />
                 <SideBarItem label="Shop" href="/shop" iconSrc="/shop.svg" />
+                <div className={cn(
+                    isAdmin() ? "block" : "hidden"
+                )}>
+                    <SideBarItem label="Admin page" href="/admin" iconSrc="/admin.svg" />
+                </div>
             </div>
             <div className="flex items-center justify-center gap-x-2 mb-4">
                 <ClerkLoading>
@@ -52,9 +58,8 @@ export const Sidebar = async ({ className }: Props) => {
                     />
                     <div className="flex flex-col w-full p-2">
                         <span className="text-sm font-bold">
-                            {user?.fullName || "Anon"}
+                            {user?.fullName || "User"}
                         </span>
-
                         <span className="text-xs font-semibold">
                             {user?.primaryEmailAddress?.emailAddress}
                         </span>

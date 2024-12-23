@@ -40,7 +40,7 @@ export const Items = ({
                         window.location.href = response.data;
                     }
                 })
-                .catch(() => toast.error("Something went wrong"))
+                .catch(() => toast.error("Something went wrong (Stripe)"))
         });
     };
 
