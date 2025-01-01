@@ -23,7 +23,7 @@ import { ChallengeOptionList } from "./challengeOption/list";
 import { ChallengeOptionCreate } from "./challengeOption/create";
 import { ChallengeOptionEdit } from "./challengeOption/edit";
 
-const dataProvider = simpleRestProvider("/api");
+const dataProvider = simpleRestProvider("./api");
 
 const App = () => {
     return (

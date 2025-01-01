@@ -1,0 +1,62 @@
+{
+  "Courses":{
+    "title":"What do you want to learn?"
+  },
+  "Promo": {
+    "title": "Upgrade to Pro",
+    "description": "Get unlimited hearts and more!",
+    "button": "Upgrade today"
+  },
+  "LandingPage": {
+    "title": "Learn, pratice, and master new language with Dulingo.",
+    "continue_learning": "Continue Learning",
+    "login": "Login",
+    "start": "Get Started",
+    "already": "I already have an account"
+  },
+  "Leaderboard": {
+    "title": "Leaderboard",
+    "description": "See where you stand among other learners in the community."
+  },
+  "Quests": {
+    "title": "Quests",
+    "description": "Complete quests by earning points.",
+    "quest": "Earn ",
+    "view_all":"View all"
+  },
+  "Shop": {
+    "title": "Shop",
+    "description": "Spend your points on cool stuff",
+    "refill": "Refill heart",
+    "unlimited": "Unlimited hearts",
+    "upgrade": "Upgrade",
+    "settings": "Settings"
+  },
+  "SidebarItem": {
+    "learn": "Learn",
+    "leaderboard": "Leaderboard",
+    "quest": "Quest",
+    "shop": "Shop",
+    "admin": "Admin page"
+  },
+  "Quiz":{
+    "correct":"Nicely done!",
+    "wrong":"Try again",
+    "practice": "Practice again",
+    "done":"Great job!",
+    "done2":"You&apos;ve completed the lesson.",
+    "check":"Check",
+    "next":"Next",
+    "retry":"Retry",
+    "continue":"Continue",
+    "practice_title":"Practice mode",
+    "practice_description":"Use practice mode to regain hearts and points. You cannot lose hearts or points in practice mode",
+    "practice_button":"I understand",
+    "exit_title":"Wait, don't go!",
+    "exit_description":"You're about to leave the lesson. Are you sure?",
+    "exit_close":"Keep learning",
+    "exit_confirm":"Close",
+    "total_xp":"Total XP",
+    "hearts_left":"Hearts left"
+  }
+}

@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
     async headers() {
         return [
@@ -18,6 +21,10 @@ const nextConfig = {
                         value: "Content-Type, Authorization"
                     },
                     {
+                        key: 'Access-Control-Expose-Headers',
+                        value: 'Content-Range'
+                    },
+                    {
                         key: "Content-Range",
                         value: "bytes : 0-9/*"
                     },
@@ -27,4 +34,4 @@ const nextConfig = {
     },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

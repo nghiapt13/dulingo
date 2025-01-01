@@ -8,14 +8,15 @@ import { QuestionBubble } from "./question-bubble";
 import { Challenge } from "./challenge";
 import { Footer } from "./footer";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
-import { toast } from "sonner";
+import { useToast } from "@/hooks/use-toast";
 import { reduceHearts } from "@/actions/user-progress";
-import { useAudio, useWindowSize,useMount } from "react-use";
+import { useAudio, useWindowSize, useMount } from "react-use";
 import Image from "next/image";
-import { ResultCard } from "@/app/lesson/result-card";
+import { ResultCard } from "@/app/[locale]/lesson/result-card";
 import { useRouter } from "next/navigation";
 import { useHeartsModal } from "@/store/use-hearts-modal";
 import { usePracticeModal } from "@/store/use-practice-modal";
+import { useTranslations } from "next-intl";
 
 type Props = {
     initialPercentage: number;
@@ -25,9 +26,9 @@ type Props = {
         completed: boolean;
         challengeOptions: typeof challengeOptions.$inferSelect[];
     })[];
-    userSubscription: typeof userSubscription.$inferSelect &{
-        isActive:boolean;
-    }|null;
+    userSubscription: typeof userSubscription.$inferSelect & {
+        isActive: boolean;
+    } | null;
 }
 
 export const Quiz = ({
@@ -37,11 +38,13 @@ export const Quiz = ({
     initialLessonId,
     userSubscription
 }: Props) => {
-    const {open: openHeartsModal} = useHeartsModal();
-    const {open: openPracticeModal} = usePracticeModal();
+    const t = useTranslations('Quiz');
+    const {toast} = useToast();
+    const { open: openHeartsModal } = useHeartsModal();
+    const { open: openPracticeModal } = usePracticeModal();
 
-    useMount(()=>{
-        if(initialPercentage===100){
+    useMount(() => {
+        if (initialPercentage === 100) {
             openPracticeModal();
         }
     })
@@ -61,8 +64,8 @@ export const Quiz = ({
     const [pending, startTransition] = useTransition();
     const [lessonId] = useState(initialLessonId);
     const [hearts, setHearts] = useState(initialHearts);
-    const [percentage, setPercentage] = useState(()=>{
-        return initialPercentage === 100 ? 0: initialPercentage;
+    const [percentage, setPercentage] = useState(() => {
+        return initialPercentage === 100 ? 0 : initialPercentage;
     });
     const [challenges] = useState(initialLessonChallenges);
     const [activeIndex, setActiveIndex] = useState(() => {
@@ -125,7 +128,11 @@ export const Quiz = ({
                             setHearts((prev) => Math.min(prev + 1, 5))
                         }
                     })
-                    .catch(() => toast.error("Something went wrong.Please try again"));
+                    .catch(() => toast({
+                        title: "Uh oh! Something went wrong.",
+                        description: "There was a problem with your request.",
+                        variant: "destructive"
+                    }))
             })
 
         } else {
@@ -143,7 +150,11 @@ export const Quiz = ({
                             setHearts((prev) => Math.max(prev - 1, 0));
                         }
                     })
-                    .catch(() => toast.error("Something went wrong. Try again later"))
+                    .catch(() => toast({
+                        title: "Uh oh! Something went wrong.",
+                        description: "There was a problem with your request.",
+                        variant: "destructive"
+                    }))
             })
         }
     };
@@ -175,7 +186,7 @@ export const Quiz = ({
                         width={50}
                     />
                     <h1 className="text-xl lg:text-3xl font-bold text-neutral-700">
-                        Great job! <br /> You&apos;ve completed the lesson.
+                        {t('done')} <br /> {t('done2')}
                     </h1>
                     <div className="flex items-center gap-x-4 w-full">
                         <ResultCard

@@ -7,12 +7,15 @@ import { Separator } from "@/components/ui/separator";
 import { UserProgress } from "@/components/user-progress";
 import { quests } from "@/constants";
 import { getTopTenUsers, getUserProgress, getUserSubscription } from "@/db/queries";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
 
 
 const QuestsPage = async () => {
+    const useQuests = quests();
+    const t = await getTranslations('Quests');
     const userProgressData = getUserProgress();
     const userSubscriptionData = getUserSubscription();
     const [
@@ -50,12 +53,12 @@ const QuestsPage = async () => {
                         height={90}
                         width={90}
                     />
-                    <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">Quests</h1>
+                    <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">{t('title')}</h1>
                     <p className="text-muted-foreground text-center text-lg mb-6">
-                        Complete quests by earning points.
+                        {t('description')}
                     </p>
                     <ul className="w-full">
-                        {quests.map((quest) => {
+                        {useQuests.map((quest) => {
                             const progress = (userProgress.points / quest.value) * 100;
                             return (
                                 <div className="flex items-center w-full p-4 gap-x-4 border-t-2" key={quest.title}>

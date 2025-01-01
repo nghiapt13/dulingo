@@ -7,10 +7,12 @@ import { redirect } from "next/navigation";
 import { Items } from "./items";
 import { Promo } from "@/components/promo";
 import { Quests } from "@/components/quests";
+import { getTranslations } from "next-intl/server";
 
 const ShopPage = async () => {
     const userProgressData = getUserProgress();
     const userSubscriptionData = getUserSubscription();
+    const t = await getTranslations('Shop');
     const [
         userProgress,
         userSubscription
@@ -47,9 +49,9 @@ const ShopPage = async () => {
                         height={90}
                         width={90}
                     />
-                    <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">Shop</h1>
+                    <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">{t('title')}</h1>
                     <p className="text-muted-foreground text-center text-lg mb-6">
-                        Spend your points on cool stuff
+                        {t('description')}
                     </p>
                     <Items
                         hearts={userProgress.hearts}

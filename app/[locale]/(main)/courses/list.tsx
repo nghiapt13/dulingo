@@ -1,6 +1,6 @@
 "use client";
 
-import { toast } from "sonner";
+import { useToast } from "@/hooks/use-toast";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 
@@ -15,6 +15,7 @@ type Props = {
 };
 
 export const List = ({ courses, activeCourseId }: Props) => {
+    const { toast } = useToast()
     const router = useRouter();
     const [pending, startTransition] = useTransition();
 
@@ -27,7 +28,11 @@ export const List = ({ courses, activeCourseId }: Props) => {
 
         startTransition(() => {
             upsertUserProgress(id)
-                .catch(() => toast.error("Something went wrong."));
+                .catch(() => toast({
+                    title: "Uh oh! Something went wrong.",
+                    description: "There was a problem with your request.",
+                    variant: "destructive"
+                }))
         });
     };
 

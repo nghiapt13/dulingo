@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { POINTS_TO_REFILL } from "@/constants";
 import Image from "next/image";
 import { useTransition } from "react";
-import { toast } from "sonner";
+import { useToast } from "@/hooks/use-toast";
+import { useTranslations } from "next-intl";
 
 
 type Props = {
@@ -20,6 +21,8 @@ export const Items = ({
     points,
     hasActiveSubscription
 }: Props) => {
+    const t = useTranslations('Shop');
+    const { toast } = useToast();
     const [pending, startTransition] = useTransition();
     const onRefillHearts = () => {
         if (pending || hearts === 5 || points < POINTS_TO_REFILL) {
@@ -28,7 +31,11 @@ export const Items = ({
 
         startTransition(() => {
             refillHeart()
-                .catch(() => toast.error("Something went wrong"));
+                .catch(() => toast({
+                    title: "Uh oh! Something went wrong.",
+                    description: "There was a problem with your request.",
+                    variant: "destructive"
+                }))
         })
     }
 
@@ -40,7 +47,11 @@ export const Items = ({
                         window.location.href = response.data;
                     }
                 })
-                .catch(() => toast.error("Something went wrong (Stripe)"))
+                .catch(() => toast({
+                    title: "Uh oh! Something went wrong.",
+                    description: "There was a problem with your request.",
+                    variant: "destructive"
+                }))
         });
     };
 
@@ -55,7 +66,7 @@ export const Items = ({
                 />
                 <div className="flex-1">
                     <p className="text-neutral-700 text-base lg:text-xl font-bold">
-                        Refill heart
+                        {t('refill')}
                     </p>
                 </div>
                 <Button
@@ -88,14 +99,14 @@ export const Items = ({
                 />
                 <div className="flex-1">
                     <p className="text-neutral-700 text-base lg:text-xl font-bold">
-                        Unlimited hearts
+                        {t('unlimited')}
                     </p>
                 </div>
                 <Button
                     onClick={onUpgrade}
                     disabled={pending}
                 >
-                    {hasActiveSubscription ? "settings" : "upgrade"}
+                    {hasActiveSubscription ? t('settings') : t('upgrade')}
                 </Button>
             </div>
         </ul>

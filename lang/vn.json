@@ -1,0 +1,62 @@
+{
+    "Courses": {
+        "title": "Bạn muốn học ngôn ngữ gì?"
+    },
+    "Promo": {
+        "title": "Nâng cấp lên Pro",
+        "description": "Không giới hạn Hearts và nhiều hơn thế nữa",
+        "button": "Nâng cấp ngay"
+    },
+    "LandingPage": {
+        "title": "Học, luyện tập và làm chủ ngôn ngữ mới cùng Đu ling gô",
+        "continue_learning": "Tiếp tục học ",
+        "login": "Đăng nhập",
+        "start": "Bắt đầu học",
+        "already": "Tôi đã có tài khoản"
+    },
+    "Leaderboard": {
+        "title": "Bảng Xếp Hạng",
+        "description": "Xem vị trí của bạn so với những người học khác trong cộng đồng."
+    },
+    "Quests": {
+        "title": "Nhiệm Vụ",
+        "description": "Hoàn thành nhiệm vụ bằng cách kiếm điểm.",
+        "quest": "Thu thập được ",
+        "view_all": "Hiển thị tất cả"
+    },
+    "Shop": {
+        "title": "Cửa Hàng",
+        "description": "Dùng điểm của bạn vào những thứ thú vị",
+        "refill": "Nạp lại Hearts",
+        "unlimited": "Hearts không giới hạn",
+        "upgrade": "Nâng cấp",
+        "settings": "Cài đặt gói"
+    },
+    "SidebarItem": {
+        "learn": "Học",
+        "leaderboard": "Bảng xếp hạng",
+        "quest": "Nhiệm vụ",
+        "shop": "Cửa hàng",
+        "admin": "Trang quản trị"
+    },
+    "Quiz": {
+        "correct": "Chính xác!",
+        "wrong": "Thử lại nào",
+        "practice": "Luyện tập lại",
+        "done": "Tốt lắm",
+        "done2": "Bạn đã hoàn thành bài học",
+        "check": "Kiểm tra",
+        "next": "Câu tiếp theo",
+        "retry": "Thử lại",
+        "continue": "Tiếp tục",
+        "practice_title": "Chế độ luyện tập",
+        "practice_description": "Sử dụng chế độ luyện tập để thu thập Hearts và điểm. Hearts hoặc điểm sẽ không bị trừ trong chế độ thực hành",
+        "practice_button": "Đã hiểu",
+        "exit_title": "Chờ xíuuuuuu",
+        "exit_description": "Bạn có chắc muốn thoát buổi học không?",
+        "exit_close": "Tiếp tục học",
+        "exit_confirm": "Thoát",
+        "total_xp": "Tổng XP nhận được",
+        "hearts_left": "Hearts còn lại"
+    }
+}
